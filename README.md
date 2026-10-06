@@ -36,7 +36,7 @@ Sistemin siber saldırıları nasıl yakaladığını test etmek için aşağıd
 2. Logların içerisinde geçen `Nmap`, `Nikto`, veya URL parametrelerindeki `OR '1'='1'`, `<script>` gibi SQLi/XSS denemeleri sistem tarafından anında filtrelenecek ve detaylı olarak listelenecektir.
 
 ## 👨‍💻 Geliştirici
-**Ömer Faruk TOPTAŞ** - Adli Bilişim Mühendisi & Siber Güvenlik Uzmanı
+**Ömer Faruk TOPTAŞ** - Adli Bilişim Mühendisi & Siber Güvenlik
 - [LinkedIn](https://www.linkedin.com/in/omer-faruk-toptas-43b599374/)
 - [GitHub](https://github.com/omerfaruktoptas)
 
