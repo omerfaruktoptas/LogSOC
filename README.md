@@ -2,6 +2,8 @@
 
 ![LogSOC Dashboard](https://img.shields.io/badge/Security-SOC-blue) ![JavaScript](https://img.shields.io/badge/Language-JavaScript-yellow) ![Status](https://img.shields.io/badge/Status-Active-success)
 
+> 🔴 **Canlı Demo (İndirmeden Test Edin):** [https://omerfaruktoptas.github.io/LogSOC/](https://omerfaruktoptas.github.io/LogSOC/)
+
 LogSOC, güvenlik analistlerinin (SOC Analistleri) sistem ve web sunucusu loglarını (SSH, Apache, Nginx vb.) hızlıca analiz etmesini, siber tehditleri tespit etmesini ve bu verileri görselleştirmesini sağlayan tamamen istemci tarafında (Client-Side) çalışan bir web arayüzüdür.
 
 ## 🚀 Özellikler
