@@ -1,0 +1,23 @@
+Oct 06 22:41:43 KaliPc systemd[1]: Starting ssh.service - OpenBSD Secure Shell server...
+Oct 06 22:41:43 KaliPc sshd[148305]: Server listening on 0.0.0.0 port 22.
+Oct 06 22:41:43 KaliPc sshd[148305]: Server listening on :: port 22.
+Oct 06 22:41:43 KaliPc systemd[1]: Started ssh.service - OpenBSD Secure Shell server.
+Oct 06 22:42:33 KaliPc sshd-session[148680]: Invalid user admin from 192.168.1.111 port 52870
+Oct 06 22:42:40 KaliPc sshd-session[148680]: pam_unix(sshd:auth): check pass; user unknown
+Oct 06 22:42:40 KaliPc sshd-session[148680]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.111
+Oct 06 22:42:41 KaliPc sshd-session[148680]: Failed password for invalid user admin from 192.168.1.111 port 52870 ssh2
+Oct 06 22:42:43 KaliPc sshd-session[148680]: pam_unix(sshd:auth): check pass; user unknown
+Oct 06 22:42:46 KaliPc sshd-session[148680]: Failed password for invalid user admin from 192.168.1.111 port 52870 ssh2
+Oct 06 22:42:50 KaliPc sshd-session[148680]: Connection reset by invalid user admin 192.168.1.111 port 52870 [preauth]
+Oct 06 22:42:50 KaliPc sshd-session[148680]: PAM 1 more authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.111
+Oct 06 22:43:05 KaliPc unix_chkpwd[149225]: password check failed for user (root)
+Oct 06 22:43:05 KaliPc sshd-session[149191]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.111  user=root
+Oct 06 22:43:07 KaliPc sshd-session[149191]: Failed password for root from 192.168.1.111 port 52872 ssh2
+Oct 06 22:43:13 KaliPc sshd-session[149191]: Failed password for root from 192.168.1.111 port 52872 ssh2
+Oct 06 22:43:16 KaliPc unix_chkpwd[149308]: password check failed for user (root)
+Oct 06 22:43:17 KaliPc sshd-session[149191]: Failed password for root from 192.168.1.111 port 52872 ssh2
+Oct 06 22:43:18 KaliPc sshd-session[149191]: Connection reset by authenticating user root 192.168.1.111 port 52872 [preauth]
+Oct 06 22:43:18 KaliPc sshd-session[149191]: PAM 2 more authentication failures; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.111  user=root
+Oct 06 22:43:27 KaliPc sshd-session[149381]: pam_unix(sshd:auth): authentication failure; logname= uid=0 euid=0 tty=ssh ruser= rhost=192.168.1.111  user=root
+Oct 06 22:43:30 KaliPc sshd-session[149381]: Failed password for root from 192.168.1.111 port 52873 ssh2
+Oct 06 22:43:32 KaliPc sshd-session[149381]: Connection reset by authenticating user root 192.168.1.111 port 52873 [preauth]

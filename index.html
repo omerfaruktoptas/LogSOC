@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOC Log Analysis Dashboard</title>
+    <meta name="description" content="A modern SOC log analysis dashboard for visualizing security events.">
+    <link rel="stylesheet" href="style.css?v=6">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&family=JetBrains+Mono:wght@400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="layout-wrapper">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-primary"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                    <span>SOC-OS</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <button class="nav-item active" data-target="view-dashboard">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="7" height="9" x="3" y="3" rx="1"></rect><rect width="7" height="5" x="14" y="3" rx="1"></rect><rect width="7" height="9" x="14" y="12" rx="1"></rect><rect width="7" height="5" x="3" y="16" rx="1"></rect></svg>
+                    Gösterge Paneli (Analiz)
+                </button>
+                <button class="nav-item" data-target="view-calendar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect width="18" height="18" x="3" y="4" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+                    Takvim
+                </button>
+                <button class="nav-item" data-target="view-documents">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    Belgeler (Log Yükle)
+                </button>
+                <button class="nav-item" data-target="view-notifications">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"></path></svg>
+                    Sistem Bildirimleri
+                </button>
+                <button class="nav-item" data-target="view-settings">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+                    Ayarlar
+                </button>
+            </nav>
+            <div class="sidebar-user">
+                <div class="user-avatar">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                </div>
+                <div class="user-info">
+                    <p class="user-name">Sistem Yöneticisi</p>
+                    <p class="user-role">SOC Modülü Aktif</p>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="top-header">
+                <h1 id="page-title">Gösterge Paneli (Analiz)</h1>
+                <div class="header-actions">
+                    <button class="icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg></button>
+                    <button class="icon-btn"><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg></button>
+                </div>
+            </header>
+
+            <!-- Dashboard View -->
+            <div id="view-dashboard" class="page-view active">
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h3>Toplam Olay</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        </div>
+                        <div class="stat-value" id="dash-total-events">0</div>
+                        <div class="stat-hint text-success">Log bekleniyor...</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h3>Aktif Tehditler</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+                        </div>
+                        <div class="stat-value text-danger" id="dash-active-threats">0</div>
+                        <div class="stat-hint text-danger">Tarama yapılmadı</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h3>Engellendi</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                        </div>
+                        <div class="stat-value">0</div>
+                        <div class="stat-hint text-success">Hazırda bekliyor</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-header">
+                            <h3>Bloklanan IP'ler</h3>
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-muted"><path d="M18.36 6.64a9 9 0 1 1-12.73 0"></path><line x1="12" y1="2" x2="12" y2="12"></line></svg>
+                        </div>
+                        <div class="stat-value">0</div>
+                        <div class="stat-hint text-success">Güvenlik Duvarı Aktif</div>
+                    </div>
+                </div>
+                
+                <div class="content-card mt-6">
+                    <div class="card-header">
+                        <h2>Trafik Analizi</h2>
+                        <p class="text-muted text-sm">Sistem trafiği ve engellenen saldırıların özeti</p>
+                    </div>
+                    <div class="card-body">
+                        <!-- Dynamic chart container -->
+                        <div class="mock-chart" id="traffic-chart">
+                            <!-- Bars injected by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Calendar View -->
+            <div id="view-calendar" class="page-view hidden">
+                <div class="flex-between mb-6">
+                    <p class="text-muted">Detaylı logları görmek için bir gün seçin.</p>
+                    <div class="view-controls">
+                        <button id="btn-weekly" class="view-btn active">Haftalık</button>
+                        <button id="btn-monthly" class="view-btn">Aylık</button>
+                    </div>
+                </div>
+                <div id="tiles-container" class="tiles-grid">
+                    <!-- Tiles will be injected here by JS -->
+                </div>
+            </div>
+            
+            <!-- Documents (Upload Logs) View -->
+            <div id="view-documents" class="page-view hidden">
+                <div class="content-card max-w-2xl mx-auto mt-10">
+                    <div class="card-header text-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="text-accent-primary mx-auto mb-4"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                        <h2>Log Dosyası Yükle</h2>
+                        <p class="text-muted mt-2">SOC ayrıştırması ve analizi için .log, .csv veya .txt dosyalarınızı yükleyin.</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="upload-area">
+                            <input type="file" id="log-file-input" class="hidden-input" accept=".txt,.log,.csv">
+                            <label for="log-file-input" class="upload-label">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="17 8 12 3 7 8"></polyline><line x1="12" y1="3" x2="12" y2="15"></line></svg>
+                                <span>Göz atmak veya sürükleyip bırakmak için tıklayın</span>
+                                <span class="text-xs text-muted">Maksimum dosya boyutu: 50MB</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notifications (Summary) View -->
+            <div id="view-notifications" class="page-view hidden">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Sistem Bildirimleri ve Özet</h2>
+                        <p class="text-muted text-sm">Sistemin aldığı savunma aksiyonları ve güvenlik uyarıları</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="message-list">
+                            <div class="message-item">
+                                <div class="user-avatar" style="background: var(--success); color: white;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10"></path></svg>
+                                </div>
+                                <div class="message-content">
+                                    <p><span class="font-bold text-accent-primary">Güvenlik Duvarı</span> son DDoS girişimiyle bağlantılı 43 şüpheli IP adresini engelledi.</p>
+                                    <span class="text-xs text-muted">10 dakika önce - Otomatik Savunma</span>
+                                </div>
+                            </div>
+                            <div class="message-item">
+                                <div class="user-avatar" style="background: var(--danger); color: white;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                                </div>
+                                <div class="message-content">
+                                    <p><span class="font-bold text-accent-primary">WAF (Web Uygulama Güvenlik Duvarı)</span> veritabanı sunucusunda ardışık SQL Injection taramaları tespit etti.</p>
+                                    <span class="text-xs text-muted">1 saat önce - Kritik Tespit</span>
+                                </div>
+                            </div>
+                            <div class="message-item">
+                                <div class="user-avatar" style="background: var(--warning); color: white;">
+                                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+                                </div>
+                                <div class="message-content">
+                                    <p><span class="font-bold text-accent-primary">NIDS</span> /admin dizinine yönelik yoğun bir kaba kuvvet (brute-force) saldırısını engelledi.</p>
+                                    <span class="text-xs text-muted">3 saat önce - Orta Risk</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Settings View -->
+            <div id="view-settings" class="page-view hidden">
+                <div class="content-card">
+                    <div class="card-header">
+                        <h2>Analiz Ayarları</h2>
+                        <p class="text-muted text-sm">Logları ne kadar detaylı görmek istediğinizi yapılandırın</p>
+                    </div>
+                    <div class="card-body">
+                        <div class="settings-group">
+                            <label class="setting-item">
+                                <div>
+                                    <p class="font-bold">Payload Detaylarını Göster</p>
+                                    <p class="text-xs text-muted">Saldırılarda kullanılan tam komutu/payload'u göster.</p>
+                                </div>
+                                <input type="checkbox" checked class="toggle">
+                            </label>
+                            <label class="setting-item mt-4">
+                                <div>
+                                    <p class="font-bold">Sıkı Renklendirme</p>
+                                    <p class="text-xs text-muted">Orta ve kritik tehditleri kalın kırmızı renkle vurgula.</p>
+                                </div>
+                                <input type="checkbox" checked class="toggle">
+                            </label>
+                            <label class="setting-item mt-4">
+                                <div>
+                                    <p class="font-bold">Paneli Otomatik Yenile</p>
+                                    <p class="text-xs text-muted">Verileri her 5 dakikada bir yenile.</p>
+                                </div>
+                                <input type="checkbox" class="toggle">
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Detail View (Full Page for Log Table) -->
+            <div id="detail-view" class="page-view hidden">
+                <div class="flex-between mb-6">
+                    <div>
+                        <button id="btn-back" class="back-btn mb-2">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+                            Takvime Geri Dön
+                        </button>
+                        <h1 id="detail-date-title">Log Detayları</h1>
+                        <p class="text-muted">Güvenlik olaylarının detaylı dökümü</p>
+                    </div>
+                </div>
+                
+                <div id="detail-summary" class="mb-6 p-4 rounded-md hidden" style="background: rgba(14, 165, 233, 0.1); border-left: 4px solid var(--accent-primary); line-height: 1.6;">
+                </div>
+
+                <div class="content-card p-0">
+                    <div class="table-container">
+                        <table id="logs-table">
+                            <thead>
+                                <tr>
+                                    <th>Zaman</th>
+                                    <th>Saldırı Türü</th>
+                                    <th>Hedef / Payload (Komut)</th>
+                                    <th>Sayı</th>
+                                    <th>Kaynak IP</th>
+                                    <th>Seviye</th>
+                                </tr>
+                            </thead>
+                            <tbody id="logs-table-body">
+                                <!-- Log rows will be injected here -->
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+        </main>
+    </div>
+
+    <script src="app.js?v=7"></script>
+</body>
+</html>
